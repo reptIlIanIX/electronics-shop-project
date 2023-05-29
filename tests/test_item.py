@@ -23,3 +23,25 @@ def test_apply_discount(item_example):
     pay_rate = 0.3
     item_example.apply_discount()
     assert item_example.price == 30000.0
+
+
+item1 = Item('NASJDAJSDKASDJASD', 300, 15)
+assert item1.name == 'NASJDAJSDKASDJASD'
+
+
+def test_string_to_number():
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('5.0') == 5
+    assert Item.string_to_number('513') == 513
+
+
+def test_instantiate_from_csv():
+    Item.instantiate_from_csv()
+    item1 = Item.all[1]
+    assert item1.name == 'Ноутбук'
+    assert item1.quantity == 3
+
+
+item5 = Item("13123", 123, 132)
+
+item5.name = "as123dasdasd"
