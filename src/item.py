@@ -21,10 +21,16 @@ class Item:
         self.price = price
         self.quantity = quantity
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return f'{self.name}'
+
     @classmethod
     def instantiate_from_csv(cls):
         items = []
-        with open('C:\\Users\\user\\PycharmProjects\\electronics-shop-project\\src\\items.csv', 'r') as csv_file:
+        with open('../src/items.csv', 'r', encoding='windows-1251') as csv_file:
             reader = csv.reader(csv_file)
             for item in reader:
                 items.append(item)
@@ -48,8 +54,8 @@ class Item:
 
     @name.setter
     def name(self, name):
-        if len(self.__name) >= 10:
-            raise Exception('Длина наименования товара превышает 10 символов')
+        if len(name) >= 10:
+            return Exception('Длина наименования товара превышает 10 символов')
         else:
             self.__name = name
 

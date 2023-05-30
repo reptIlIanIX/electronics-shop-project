@@ -42,6 +42,16 @@ def test_instantiate_from_csv():
     assert item1.quantity == 3
 
 
-item5 = Item("13123", 123, 132)
+def test_setter():
+    item5 = Item("13123", 123, 132)
+    item5.name = "3123"
+    assert item5.name == "3123"
+    try:
+        item5.name = 'sdkaoskdasod'
+    except Exception:
+        'Длина наименования товара превышает 10 символов'
 
-item5.name = "as123dasdasd"
+def test_repr():
+    item1 = Item('Oleg', 123, 132)
+    assert str(item1) == 'Oleg'
+    assert repr(item1) == "Item('Oleg', 123, 132)"
