@@ -1,5 +1,4 @@
 import csv
-import os.path
 
 
 class Item:
@@ -26,6 +25,11 @@ class Item:
 
     def __str__(self):
         return f'{self.name}'
+
+    def __add__(self, other):
+        if not isinstance(other, Item):
+            raise ValueError
+        return self.quantity + other.quantity
 
     @classmethod
     def instantiate_from_csv(cls):
@@ -68,7 +72,7 @@ class Item:
         total_price = self.price * self.quantity
         return total_price
 
-    def apply_discount(self) -> None:
+    def apply_discount(self) -> float:
         """
         Применяет установленную скидку для конкретного товара.
         """

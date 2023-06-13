@@ -48,7 +48,7 @@ def test_setter():
     assert item5.name == "3123"
     try:
         item5.name = 'sdkaoskdasod'
-    except Exception:
+    except ValueError:
         'Длина наименования товара превышает 10 символов'
 
 def test_repr():
